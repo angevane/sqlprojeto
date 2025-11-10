@@ -69,15 +69,29 @@
 
 
 
+# import sqlite3
+
+# con = sqlite3.connect("Livro.db")
+# cur = con.cursor()
+
+# cur.execute("SELECT*FROM Livros ORDER BY ano DESC")
+# ordenados = cur.fetchall()
+
+# print("Livros ordenados do mais recente ao mais antigo:")
+# for livro in ordenados:
+#     print(livro)
+# con.close()
+
+
+
 import sqlite3
 
 con = sqlite3.connect("Livro.db")
 cur = con.cursor()
 
-cur.execute("SELECT*FROM Livros ORDER BY ano DESC")
+cur.execute("DELETE FROM Livros WHERE ano = (SELECT MIN (ano) FROM Livros)")
 ordenados = cur.fetchall()
 
-print("Livros ordenados do mais recente ao mais antigo:")
-for livro in ordenados:
-    print(livro)
+con.commit()
+print("Livro mais antigo deletado!")
 con.close()
