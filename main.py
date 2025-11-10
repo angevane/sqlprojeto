@@ -123,20 +123,32 @@
 
 
 
+# import sqlite3
+# con = sqlite3.connect("dados.db")
+# cur = con.cursor()
+
+# usuarios = [
+#     ("Alice", 25),
+#     ("Bruno", 30),
+#     ("Carla", 22),
+#     ("Diego", 28),
+#     ("Elisa", 35)
+# ]
+
+# cur.executemany("INSERT INTO Usuario (nome, idade) VALUES(?, ?)", usuarios)
+
+# con.commit()
+# con.close()
+# print("5 usuários inseridos com sucesso!")
+
+
+
 import sqlite3
+
 con = sqlite3.connect("dados.db")
 cur = con.cursor()
 
-usuarios = [
-    ("Alice", 25),
-    ("Bruno", 30),
-    ("Carla", 22),
-    ("Diego", 28),
-    ("Elisa", 35)
-]
-
-cur.executemany("INSERT INTO Usuario (nome, idade) VALUES(?, ?)", usuarios)
+cur.execute("DROP TABLE IF EXISTS Usuario;")
 
 con.commit()
 con.close()
-print("5 usuários inseridos com sucesso!")
