@@ -111,12 +111,32 @@
 
 
 
+# import sqlite3
+# con = sqlite3.connect("dados.db")
+# cur = con.cursor()
+
+# cur.execute("ALTER TABLE Usuario ADD COLUMN idade INTEGER;")
+
+# con.commit()
+# con.close()
+# print("Coluna 'idade' adicionada com sucesso!")
+
+
+
 import sqlite3
 con = sqlite3.connect("dados.db")
 cur = con.cursor()
 
-cur.execute("ALTER TABLE Usuario ADD COLUMN idade INTEGER;")
+usuarios = [
+    ("Alice", 25),
+    ("Bruno", 30),
+    ("Carla", 22),
+    ("Diego", 28),
+    ("Elisa", 35)
+]
+
+cur.executemany("INSERT INTO Usuario (nome, idade) VALUES(?, ?)", usuarios)
 
 con.commit()
 con.close()
-print("Coluna 'idade' adicionada com sucesso!")
+print("5 usuários inseridos com sucesso!")
