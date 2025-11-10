@@ -56,13 +56,28 @@
 
 
 
+# import sqlite3
+
+# con = sqlite3.connect("Livro.db")
+# cur = con.cursor()
+
+# cur.execute("UPDATE Livros SET disponivel = 0 WHERE id = 2")
+
+# con.commit()
+# print("Disponibilidade atualizada!")
+# con.close()
+
+
+
 import sqlite3
 
 con = sqlite3.connect("Livro.db")
 cur = con.cursor()
 
-cur.execute("UPDATE Livros SET disponivel = 0 WHERE id = 2")
+cur.execute("SELECT*FROM Livros ORDER BY ano DESC")
+ordenados = cur.fetchall()
 
-con.commit()
-print("Disponibilidade atualizada!")
+print("Livros ordenados do mais recente ao mais antigo:")
+for livro in ordenados:
+    print(livro)
 con.close()
