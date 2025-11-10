@@ -97,14 +97,26 @@
 # con.close()
 
 
+# import sqlite3
+# con = sqlite3.connect("dados.db")
+# cur = con.cursor()
+# cur.execute("""
+#             CREATE TABLE Usuario (
+#             id INTEGER PRIMARY KEY AUTOINCREMENT, 
+#             nome TEXT
+#             );
+#             """)
+
+# print("Tabela Usuario criada com sucesso!")
+
+
+
 import sqlite3
 con = sqlite3.connect("dados.db")
 cur = con.cursor()
-cur.execute("""
-            CREATE TABLE Usuario (
-            id INTEGER PRIMARY KEY AUTOINCREMENT, 
-            nome TEXT
-            );
-            """)
 
-print("Tabela Usuario criada com sucesso!")
+cur.execute("ALTER TABLE Usuario ADD COLUMN idade INTEGER;")
+
+con.commit()
+con.close()
+print("Coluna 'idade' adicionada com sucesso!")
