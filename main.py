@@ -41,15 +41,28 @@
 
 
 
+# import sqlite3
+
+# con = sqlite3.connect("Livro.db")
+# cur = con.cursor()
+
+# cur.execute("SELECT*FROM Livros WHERE disponivel=1")
+# livros_disponiveis = cur.fetchall()
+
+# print("Livros disponíveis:")
+# for livro in livros_disponiveis:
+#     print(livro)
+# con.close()
+
+
+
 import sqlite3
 
 con = sqlite3.connect("Livro.db")
 cur = con.cursor()
 
-cur.execute("SELECT*FROM Livros WHERE disponivel=1")
-livros_disponiveis = cur.fetchall()
+cur.execute("UPDATE Livros SET disponivel = 0 WHERE id = 2")
 
-print("Livros disponíveis:")
-for livro in livros_disponiveis:
-    print(livro)
+con.commit()
+print("Disponibilidade atualizada!")
 con.close()
