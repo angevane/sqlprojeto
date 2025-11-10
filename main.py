@@ -84,14 +84,27 @@
 
 
 
+# import sqlite3
+
+# con = sqlite3.connect("Livro.db")
+# cur = con.cursor()
+
+# cur.execute("DELETE FROM Livros WHERE ano = (SELECT MIN (ano) FROM Livros)")
+# ordenados = cur.fetchall()
+
+# con.commit()
+# print("Livro mais antigo deletado!")
+# con.close()
+
+
 import sqlite3
-
-con = sqlite3.connect("Livro.db")
+con = sqlite3.connect("dados.db")
 cur = con.cursor()
+cur.execute("""
+            CREATE TABLE Usuario (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            nome TEXT
+            );
+            """)
 
-cur.execute("DELETE FROM Livros WHERE ano = (SELECT MIN (ano) FROM Livros)")
-ordenados = cur.fetchall()
-
-con.commit()
-print("Livro mais antigo deletado!")
-con.close()
+print("Tabela Usuario criada com sucesso!")
