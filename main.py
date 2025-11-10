@@ -16,3 +16,5 @@ cursor.execute("""
                 """)
 
 print("Tabela criada com sucesso!")
+
+
